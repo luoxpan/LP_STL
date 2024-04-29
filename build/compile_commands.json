@@ -1,0 +1,8 @@
+[
+{
+  "directory": "D:/workspace/STL/build",
+  "command": "D:\\CPP\\mingw64\\bin\\g++.exe  @CMakeFiles/memory_test.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\memory_test.dir\\test\\memory_test.cpp.obj -c D:\\workspace\\STL\\test\\memory_test.cpp",
+  "file": "D:/workspace/STL/test/memory_test.cpp",
+  "output": "CMakeFiles/memory_test.dir/test/memory_test.cpp.obj"
+}
+]

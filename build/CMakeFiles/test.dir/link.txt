@@ -1,0 +1,3 @@
+D:\VS_studio\IDE\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E rm -f CMakeFiles\test.dir/objects.a
+D:\CPP\mingw64\bin\ar.exe qc CMakeFiles\test.dir/objects.a @CMakeFiles\test.dir\objects1.rsp
+D:\CPP\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\test.dir/objects.a -Wl,--no-whole-archive -o D:\workspace\STL\bin\test.exe -Wl,--out-implib,D:\workspace\STL\bin\libtest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\test.dir\linkLibs.rsp
