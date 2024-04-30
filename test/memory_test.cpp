@@ -1,4 +1,4 @@
-#include "lp_memory.h"
+#include "1_allocator/lp_memory.h"
 #include <iostream>
 #include <string>
 class TestClass
@@ -6,6 +6,7 @@ class TestClass
 public:
     int id;
     char *name;
+    long double data[100];
 
 public:
     TestClass(int id, char *name)
@@ -13,6 +14,10 @@ public:
         this->id = id;
         this->name = new char[strlen(name) + 1];
         strcpy(this->name, name);
+        for (int i = 0; i < 100; i++)
+        {
+            data[i] = i;
+        }
     }
     ~TestClass() {}
 };
@@ -22,7 +27,7 @@ int main()
     std::cout << "Testing LP memory management..." << std::endl;
 
     // 测试allocate和deallocate函数
-    TestClass *testClass = lp::simple_alloc<TestClass, lp::alloc>::allocate(3);
+    TestClass *testClass = lp::simple_alloc<TestClass, lp::alloc>::allocate(30);
 
     if (testClass == nullptr)
     {
@@ -42,7 +47,7 @@ int main()
         std::cout << "The name of the second object is: " << testClass[2].name << std::endl;
     }
 
-    lp::simple_alloc<TestClass, lp::alloc>::deallocate(testClass, 3);
+    lp::simple_alloc<TestClass, lp::alloc>::deallocate(testClass, 30);
     std::cout << "Deallocation done!" << std::endl;
 
     // 测试uninitialized_fill函数
