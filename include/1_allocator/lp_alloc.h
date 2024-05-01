@@ -1,4 +1,11 @@
 /*
+@author: LXP
+@create time: 2024-4-28
+@git repo: https://github.com/luoxpan/LP_STL
+@主要参考: <STL源码剖析>侯捷 著 华中科技大学出版社 出版
+*/
+
+/*
 负责内存空间的配置与释放
 */
 #ifndef LP_ALLOC_H

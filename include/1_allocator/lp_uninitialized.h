@@ -1,3 +1,9 @@
+/*
+@author: LXP
+@create time: 2024-4-29
+@git repo: https://github.com/luoxpan/LP_STL
+@主要参考: <STL源码剖析>侯捷 著 华中科技大学出版社 出版
+*/
 #ifndef LP_UNINITIALIZED_H
 #define LP_UNINITIALIZED_H
 #include <type_traits>
