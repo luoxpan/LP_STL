@@ -1,3 +1,9 @@
+/*
+@author: LXP
+@create time: 2024-5-1
+@git repo: https://github.com/luoxpan/LP_STL
+@主要参考: <STL源码剖析>侯捷 著 华中科技大学出版社 出版
+*/
 #ifndef LP_VECTOR_H_
 #define LP_VECTOR_H_
 #include <cstddef>
@@ -22,7 +28,7 @@ namespace lp
         iterator start;          // 目前使用空间的头
         iterator finish;         // 目前使用空间的尾
         iterator end_of_storage; // 可用空间的结尾
-
+        // 插入一个元素,是push_back()中使用的一个辅助函数
         void insert_aux(iterator position, const T &x);
 
         // 将first到last之间的元素拷贝到result指向的位置前面
@@ -90,7 +96,7 @@ namespace lp
             --finish;
             destory(finish);
         }
-
+        // 插入n个元素x
         void insert(iterator pos, size_type n, const T &x);
 
         iterator erase(iterator position)
@@ -121,6 +127,7 @@ namespace lp
     template <class T, class Alloc>
     void vector<T, Alloc>::insert_aux(iterator position, const T &x)
     {
+        // 备用空间充足
         if (finish != end_of_storage)
         {
             construct(finish, *(finish - 1));
@@ -129,13 +136,13 @@ namespace lp
             copy_backward(position, finish - 2, finish - 1);
             *position = x_copy;
         }
-        else
+        else // 备用空间不足
         {
             const size_type old_size = size();
             const size_type new_size = old_size == 0 ? 1 : 2 * old_size;
             iterator new_start = data_allocator::allocate(new_size);
             iterator new_finish = new_start;
-            try
+            try // 把旧内存中的元素搬到新内存
             {
                 new_finish = uninitialized_copy(begin(), position, new_start);
                 construct(new_finish, x);

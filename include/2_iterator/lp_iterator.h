@@ -11,18 +11,18 @@ namespace lp
 {
     // region: 基础iterator类,自定义的迭代器类应继承该类
     template <
-        class Category,             // 迭代器类型
         class T,                    // 元素类型
-        class Distance = ptrdiff_t, // 距离类型
+        class Reference = T &,      // 引用类型
         class Pointer = T *,        // 指针类型
-        class Reference = T &>      // 引用类型
+        class Category,             // 迭代器类型
+        class Distance = ptrdiff_t> // 距离类型
     struct iterator
     {
-        using iterator_category = Category;
         using value_type = T;
-        using difference_type = Distance;
         using pointer = Pointer;
         using reference = Reference;
+        using iterator_category = Category;
+        using difference_type = Distance;
     };
     // endregion 基础iterator类
 
@@ -110,20 +110,20 @@ namespace lp
         return category();
     }
     // 萃取获得迭代器的元素类型
-    // template <class Iterator>
-    // inline typename iterator_traits<Iterator>::value_type *
-    // value_type(const Iterator &)
-    // {
-    //     return static_cast<typename iterator_traits<Iterator>::value_type *>(0);
-    // }
+    template <class Iterator>
+    inline typename iterator_traits<Iterator>::value_type *
+    value_type(const Iterator &)
+    {
+        return static_cast<typename iterator_traits<Iterator>::value_type *>(0);
+    }
 
     // // 萃取获得迭代器的距离类型
-    // template <class Iterator>
-    // inline typename iterator_traits<Iterator>::difference_type *
-    // distance_type(const Iterator &)
-    // {
-    //     return static_cast<typename iterator_traits<Iterator>::difference_type *>(0);
-    // }
+    template <class Iterator>
+    inline typename iterator_traits<Iterator>::difference_type *
+    distance_type(const Iterator &)
+    {
+        return static_cast<typename iterator_traits<Iterator>::difference_type *>(0);
+    }
     /*
     value_type()萃取一个可能非常复杂的类型信息而使用空指针的技巧
     value_type() 函数的设计主要是为了在编译时提供关于迭代器所指向元素的类型信息,不会在运行时进行任何计算
