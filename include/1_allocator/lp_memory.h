@@ -6,8 +6,8 @@
 */
 #ifndef LP_MEMORY_H
 #define LP_MEMORY_H
-#include "lp_alloc.h"
-#include "lp_construct.h"
+#include "lp_alloc.h"   //负责内存的配置和释放
+#include "lp_construct.h" //负责内存的构造和析构
 #include "lp_uninitialized.h"
 
 /*

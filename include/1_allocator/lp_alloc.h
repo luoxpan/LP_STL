@@ -67,6 +67,8 @@ namespace lp
      * 一级配置器使用malloc,realloc,free进行内存的分配和释放
      * 采用强行退出的方式解决内存不足(分配失败)的问题
      */
+    // 注意：inst为非型别参数，完全无用。
+    //inst:单纯为了能使用模板编程
     template <int inst>
     class _malloc_alloc_template
     {
